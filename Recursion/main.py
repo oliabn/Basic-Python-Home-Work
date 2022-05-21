@@ -21,6 +21,23 @@ class Node:
         else:
             self.data = new_node                    # Вперше визначаємо потчний вузел - він же Root
 
+    def search_num_in_tree(self, data):                 # Шукає чи є задане число в деревi, якщо є True
+        if data == self.data:                           # Знайдено в деревi - True
+            print("{} in tree".format(data))
+            return True
+
+        if data < self.data:                            # Перевiрка влiво
+            if self.left is None:                       # Умова кiнця перевiрки бо далi влiво нiкуди - False
+                print("{} not in tree".format(data))
+                return False
+            return self.left.search_num_in_tree(data)   # рекурсiя - Перевiрка далi влiво бо є ще лiвi вузли
+
+        if data > self.data:                            # Перевiрка вправо
+            if self.right is None:                      # Умова кiнця перевiрки бо далi вправо нiкуди - False
+                print("{} not in tree".format(data))
+                return False
+            return self.right.search_num_in_tree(data)  # рекурсiя - Перевiрка далi вправо бо є ще правi вузли
+
     def print_tree(self):
         if self.left:
             self.left.print_tree()
@@ -36,4 +53,6 @@ for number in my_tree:
     root.insert(number)
 
 root.print_tree()
+root.search_num_in_tree(10)
+root.search_num_in_tree(50)
 
