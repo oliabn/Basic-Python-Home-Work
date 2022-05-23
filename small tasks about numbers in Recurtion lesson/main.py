@@ -38,4 +38,4 @@ def num_sum(num, sum = 0):
 
 #print_num(10)
 #check_pow_2(16)
-print(num_sum(125))
+assert num_sum(125) == 8
